@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Display People</h1>
+<a href="/people/new">Nowy</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>Edytuj</th>
+        <th>Kasuj</th>
+    </tr>
+    <tr th:each="user : ${people}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td><a th:href="@{'/people/edit/' + ${user.id}}">Edytuj wpis</a> </td>
+        <td><a th:href="@{'/people/del/' + ${user.id}}">Kasuj wpis</a> </td>
+    </tr>
+</table>
+
+
+</body>
+</html>
