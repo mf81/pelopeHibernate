@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>People Hibernate Project</title>
 </head>
 <body>
 <h1>Display People</h1>
@@ -23,8 +23,6 @@
         <td><a th:href="@{'/people/del/' + ${user.id}}">Kasuj wpis</a> </td>
     </tr>
 </table>
-
-
 <form th:if="${searchForm}" action="/people/search" method="post">
     <p>Szukaj:</p>
     <input type="text" name="search"/><br/>
@@ -32,8 +30,6 @@
     <input type="radio" name="nameOrSurname" value="surname"> nazwisko<br/>
     <input type="submit" value="Szukaj">
 </form>
-
 <a th:if="${searchForm}==false" href="/people">Powrót...</a>
-
 </body>
 </html>
