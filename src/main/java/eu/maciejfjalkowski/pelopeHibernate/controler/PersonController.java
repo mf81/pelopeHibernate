@@ -5,7 +5,10 @@ import eu.maciejfjalkowski.pelopeHibernate.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PersonController {
@@ -26,12 +29,17 @@ public class PersonController {
     }
 
     @GetMapping("/people/new")
-    public String addUser(){
+    public String addUser(@Valid Person person, BindingResult bindingResult, ModelMap modelMap){
+        modelMap.addAttribute("person",new Person());
         return "adduser";
     }
 
     @PostMapping("/people/savenew")
-    public String create(@ModelAttribute Person person){
+    public String create(@ModelAttribute @Valid Person person, BindingResult bindingResult, ModelMap modelMap){
+        if (bindingResult.hasErrors()) {
+            modelMap.addAttribute("person",person);
+            return "adduser";
+        }
         personRepository.save(person);
         return "redirect:/people";
     }

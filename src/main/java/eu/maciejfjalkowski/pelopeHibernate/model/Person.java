@@ -3,6 +3,7 @@ package eu.maciejfjalkowski.pelopeHibernate.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Person {
@@ -10,7 +11,9 @@ public class Person {
     @Id
     @GeneratedValue
     private Long Id;
+    @NotEmpty(message = "Podaj imie")
     private String name;
+    @NotEmpty(message = "Podaj nazwisko")
     private String surname;
 
     public Long getId() {

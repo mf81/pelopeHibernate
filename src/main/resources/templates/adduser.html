@@ -6,12 +6,15 @@
 </head>
 <body>
 <h1>Add People</h1>
-<form action="/people/savenew" method="post">
+<form action="/people/savenew" th:object="${person}" method="post">
     <input type="hidden" name="id" />
-    <input name="name" />
-    <input name="surname"  />
+    <input name="name" th:value="${person.name}" />
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <input name="surname" th:value="${person.surname}" />
+    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
     <input type="submit" value="Zapisz"/>
 </form>
+
 <br/>
 <a href="/people">Anuluj</a>
 </body>
