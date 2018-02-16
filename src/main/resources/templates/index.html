@@ -11,14 +11,14 @@
     <tr>
         <th>ID</th>
         <th>NAME</th>
-        <th>EMAIL</th>
+        <th>SURNAME</th>
         <th>Edytuj</th>
         <th>Kasuj</th>
     </tr>
     <tr th:each="user : ${people}">
         <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.surname}"></td>
+        <td><a th:href="@{'/people/single/' + ${user.id}}" th:text="${user.name}"></a></td>
+        <td><a th:href="@{'/people/single/' + ${user.id}}" th:text="${user.surname}"></a></td>
         <td><a th:href="@{'/people/edit/' + ${user.id}}">Edytuj wpis</a> </td>
         <td><a th:href="@{'/people/del/' + ${user.id}}">Kasuj wpis</a> </td>
     </tr>
