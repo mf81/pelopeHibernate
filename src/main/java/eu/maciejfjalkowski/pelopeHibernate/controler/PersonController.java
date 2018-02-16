@@ -21,7 +21,6 @@ public class PersonController {
     @GetMapping("/people")
     public String displayAll(ModelMap modelMap){
         modelMap.addAttribute("people",personRepository.findAll());
-
         modelMap.addAttribute("searchForm",true);
         return "index";
     }
@@ -69,7 +68,6 @@ public class PersonController {
         if(nameOrSurname.equals("surname")){
             modelMap.addAttribute("people",personRepository.findBySurnameIgnoreCase(search.toLowerCase()));
         }
-
         modelMap.addAttribute("searchForm",false);
         return "index";
 
