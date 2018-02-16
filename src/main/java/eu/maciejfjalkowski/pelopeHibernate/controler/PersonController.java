@@ -12,7 +12,7 @@ public class PersonController {
 
     @Autowired
     PersonRepository personRepository;
-    
+
     @GetMapping("/")
     public String www(){
         return "redirect:/people";
