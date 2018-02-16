@@ -16,6 +16,8 @@ public class PersonController {
     @GetMapping("/people")
     public String displayAll(ModelMap modelMap){
         modelMap.addAttribute("people",personRepository.findAll());
+
+        modelMap.addAttribute("searchForm",true);
         return "index";
     }
 
@@ -53,4 +55,31 @@ public class PersonController {
         personRepository.deleteById(person.getId());
         return "redirect:/people";
     }
+
+//    @GetMapping("/people/search/{name}")
+//    @ResponseBody
+//    public String searchName(@PathVariable String name){
+//        return personRepository.findByName(name).toString();
+//    }
+//
+//    @GetMapping("/people/searchSurname/{surname}")
+//    @ResponseBody
+//    public String searchSurname(@PathVariable String surname){
+//        return personRepository.findBySurname(surname).toString();
+//    }
+
+    @PostMapping("/people/search")
+    public String displaySearch(@RequestParam String nameOrSurname, @RequestParam String search, ModelMap modelMap){
+        if(nameOrSurname.equals("name")){
+            modelMap.addAttribute("people",personRepository.findByNameIgnoreCase(search.toLowerCase()));
+        }
+        if(nameOrSurname.equals("surname")){
+            modelMap.addAttribute("people",personRepository.findBySurnameIgnoreCase(search.toLowerCase()));
+        }
+
+        modelMap.addAttribute("searchForm",false);
+        return "index";
+
+    }
+
 }
