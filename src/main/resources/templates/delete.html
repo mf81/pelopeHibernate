@@ -5,6 +5,7 @@
     <title>Kasuj</title>
 </head>
 <body>
+<h1>Delete People</h1>
 <h4>Czy napewno chcesz usunąć wpis?</h4>
 <form action="/people/delete" method="delete" th:method="delete">
     <input type="hidden" name="id" th:value="${people.id}" />
