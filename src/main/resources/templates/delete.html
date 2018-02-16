@@ -5,9 +5,12 @@
     <title>Kasuj</title>
 </head>
 <body>
+<h4>Czy napewno chcesz usunąć wpis?</h4>
 <form action="/people/delete" method="delete" th:method="delete">
     <input type="hidden" name="id" th:value="${people.id}" />
-    <input type="submit" value="Kasuj..."/>
+    <input type="submit" value="Kasuj"/>
 </form>
+<br/>
+<a href="/people">Anuluj</a>
 </body>
 </html>
