@@ -11,12 +11,15 @@
         <th>ID</th>
         <th>NAME</th>
         <th>SURNAME</th>
-
+        <th>EDIT</th>
+        <th>DELETE</th>
     </tr>
     <tr>
         <td th:text="${people.id}"></td>
         <td th:text="${people.name}"></td>
         <td th:text="${people.surname}"></td>
+        <td><a th:href="@{'/people/edit/' + ${people.id}}">Edytuj</a> </td>
+        <td><a th:href="@{'/people/del/' + ${people.id}}">Kasuj</a> </td>
     </tr>
 </table>
 <a href="/people">Powrót</a>
