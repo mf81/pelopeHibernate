@@ -12,6 +12,11 @@ public class PersonController {
 
     @Autowired
     PersonRepository personRepository;
+    
+    @GetMapping("/")
+    public String www(){
+        return "redirect:/people";
+    }
 
     @GetMapping("/people")
     public String displayAll(ModelMap modelMap){
