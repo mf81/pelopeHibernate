@@ -29,7 +29,7 @@ public class PersonController {
     }
 
     @GetMapping("/people/new")
-    public String addUser(@Valid Person person, BindingResult bindingResult, ModelMap modelMap){
+    public String addUser(ModelMap modelMap){
         modelMap.addAttribute("person",new Person());
         return "adduser";
     }
